@@ -2,10 +2,13 @@ FROM perl:latest
 
 MAINTAINER Ross Dargan dockermaintainer@the-dargans.co.uk
 
-COPY ./LS30 /var/LS30/
-COPY script.sh /var/LS30/
+WORKDIR /var/
 
-WORKDIR /var/LS30/
+RUN git clone https://github.com/nickandrew/LS30.git
+
+WORKDIR /var/LS30
+
+COPY script.sh /var/LS30/
 
 ENV PERLLIB $PERLLIB:/var/LS30/lib
 
