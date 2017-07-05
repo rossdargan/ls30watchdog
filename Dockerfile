@@ -14,6 +14,10 @@ ENV PERLLIB $PERLLIB:/var/LS30/lib
 
 RUN cpanm Date::Format AnyEvent AnyEvent::MQTT YAML
 
+RUN apt-get update && apt-get install -y python3 python3-pip
+
+RUN pip3 install paho-mqtt
+
 VOLUME /var/LS30/event.d
 VOLUME /var/LS30/devices
 VOLUME /var/LS30/logs
